@@ -29,3 +29,4 @@ console.log(String('0' + resultDate.getDate()))
 console.log("start"+" "+startDate+" "+startMouth+" "+startYaer)
 console.log("end"+" "+endDate)
 console.log("https://mauniver.ru/student/timetable/new/print.php?key=db41c738-199f-11ef-9f67-1cc1de6f817c&perstart="+startYaer+"-"+startMouth+"-"+startDate+"&perend=2024-09-08")
+document.getElementById("result").src="https://mauniver.ru/student/timetable/new/print.php?key=db41c738-199f-11ef-9f67-1cc1de6f817c&perstart="+startYaer+"-"+startMouth+"-"+startDate+"&perend=2024-09-08";
