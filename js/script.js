@@ -9,7 +9,7 @@ console.log(resultDate.getDate()) // тест
 
 let startDate = String(resultDate.getDate())
     // если дата из 1 символа (значит до 10) то...
-    if (resultDate.getDate.length == 0) {
+    if (resultDate.getDate.length > 0) {
         startDate = '0' + startDate
     }
 
