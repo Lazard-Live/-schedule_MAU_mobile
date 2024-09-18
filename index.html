@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html style="padding: 0; margin: 0; height: 100%; width: 100%;">
+<html>
+  
   <head>
-    <meta charset="utf-8">
-    <title>Расписание</title>
+      <meta charset="utf-8">
+      <title>Расписание</title>
+      <link href="css/styles.css" rel="stylesheet">
   </head>
-  <body style="padding: 0; margin: 0; height: 100%; width: 100%;">
-    <iframe id="result" src="" width="100%" height="100%"></iframe>
-  </body>
-  <script src="js/script.js"></script>
+
+  <body>
+
+   <div class="header" id="header">
+      <button class="btn" id="btn_corrent_week">Текущая неделя</button>
+      <button class="btn" id="btn_next_week">Будущая неделя</button>
+   </div>
+
+   <div id="result" class="result">
+      <iframe id="result_iframe" src="" height="100%" width="100%"></iframe>
+  </div>
+
+</body>
+
+<script src="js/script.js"></script>
+
 </html>

@@ -1,0 +1,23 @@
+html, body { 
+    margin: 0; 
+    height: 100vh; 
+    width: 100%;
+    text-align: center;
+}
+
+.header {
+    padding: 12px 0 12px 0;
+}
+
+.btn {
+    height: 32px;
+}
+
+.btn:first-child {
+    margin-right: 10%;
+}
+
+.result {
+    height: 100%;
+    width: 100%;
+}
