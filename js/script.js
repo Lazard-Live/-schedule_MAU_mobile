@@ -1,73 +1,64 @@
-let resultDate
-
 function currentWeek() {
-    let currentDate = new Date(); //  получить текущую дату
-    let currentDateMs = currentDate.getTime(); // получить текущую дату в миллисекундах
-    let dayNumber = (currentDate.getDay() + 6) % 7; // в объекте Date обратный отсчет дней недели начинается с воскресенья, поэтому мы сдвигаем его так, чтобы он начинался с понедельника
-    let result = currentDateMs - 86400000 * dayNumber; // количество мл.сек. в дне (1000 * 3600 * 24 = 86400000) умножается на номер текущего дня (0-6) от текущей даты, а также из-за этого нам не нужно проверять, понедельник ли это, поскольку номер понедельника здесь равен 0, и это исключит ненужное вычитание
-    resultDate = new Date(result);
-    let startDate = String(resultDate.getDate()) // если дата из 1 символа (значит до 10) то добавляем вначало "0" для правильного отображения
-        if (resultDate.getDate.length > 0) {
-            startDate = '0' + startDate
-        }
+    Date.prototype.GetFirstDayOfWeek = function() {
+        return (new Date(this.setDate(this.getDate() - this.getDay()+ (this.getDay() == 0 ? -6:1) )));
+    }
     
-    let startMouth = String(resultDate.getMonth() + 1) // нужно найти нормальный фикс месяца, js начинает с 0 месяца (при возможности)
-        if (resultDate.getMonth.length == 0) {
-            startMouth = '0' + startMouth
-        }
-    
-    let startYaer = String(resultDate.getFullYear())
-    
-    let endDate = String(resultDate.getDate() + 6)
-        if (endDate.length == 0) {
-            endDate = '0' + endDate
-        }
-    
-        console.log("Начало недели:"+" "+startDate) // проверка значений
-        console.log("Конец недели:"+" "+endDate) // проверка значений
-        console.log("Резульатат сборки: "+ "\n" + "https://mauniver.ru/student/timetable/new/print.php?key=db41c738-199f-11ef-9f67-1cc1de6f817c&perstart="+startYaer+"-"+startMouth+"-"+startDate+"&perend="+startYaer+"-"+startMouth+"-"+endDate) // проверка результата сборки
-        document.getElementById("result_iframe").src="";
-        document.getElementById("result_iframe").src="https://mauniver.ru/student/timetable/new/print.php?key=db41c738-199f-11ef-9f67-1cc1de6f817c&perstart="+startYaer+"-"+startMouth+"-"+startDate+"&perend="+startYaer+"-"+startMouth+"-"+endDate;
+    Date.prototype.GetLastDayOfWeek = function() {
+        return (new Date(this.setDate(this.getDate() - this.getDay() +7)));
+    }
+
+    let today = new Date(),
+        startDate = String(today.GetFirstDayOfWeek().getDate()),
+        startMouth = String(today.getMonth()+1),
+        endDate = String(today.GetLastDayOfWeek().getDate()),
+        endMouth = startDate > endDate ? String(today.getMonth()+2) : String(today.getMonth()+1),
+        startYaer = String(today.getFullYear()),
+        endYaer = String(today.getFullYear())
+
+    startDate = startDate.length <= 1 ? "0" + startDate : startDate
+    startMouth = startMouth.length <= 1 ? "0" + startMouth : startMouth
+    endDate =  endDate.length <= 1 ? "0" + endDate : endDate
+    endMouth = endMouth.length <=1 ? "0" + endMouth : endMouth
+    endDate = endDate.length == 0 ? "0" + endDate : endDate
+
+    console.log("Начало недели:"+" "+startDate) // проверка значений
+    console.log("Конец недели:"+" "+endDate) // проверка значений
+    console.log("Резульатат сборки: "+"\n"+"https://mauniver.ru/student/timetable/new/print.php?key=db41c738-199f-11ef-9f67-1cc1de6f817c&perstart="+startYaer+"-"+startMouth+"-"+startDate+"&perend="+endYaer+"-"+endMouth+"-"+endDate) // проверка результата сборки
+    document.getElementById("result_iframe").src="";
+    document.getElementById("result_iframe").src="https://mauniver.ru/student/timetable/new/print.php?key=db41c738-199f-11ef-9f67-1cc1de6f817c&perstart="+startYaer+"-"+startMouth+"-"+startDate+"&perend="+endYaer+"-"+endMouth+"-"+endDate;
 }
 
-function nextWeek() {
-    let currentDate = new Date(); //  получить текущую дату
-    let currentDateMs = currentDate.getTime(); // получить текущую дату в миллисекундах
-    let dayNumber = (currentDate.getDay() - 8) % 7; // в объекте Date обратный отсчет дней недели начинается с воскресенья, поэтому мы сдвигаем его так, чтобы он начинался со следующего понедельника
-    let result = currentDateMs - 86400000 * dayNumber; // количество мл.сек. в дне (1000 * 3600 * 24 = 86400000) умножается на номер текущего дня (0-6) от текущей даты, а также из-за этого нам не нужно проверять, понедельник ли это, поскольку номер понедельника здесь равен 0, и это исключит ненужное вычитание
-    resultDate = new Date(result);
-    let startDate = String(resultDate.getDate()) // если дата из 1 символа (значит до 10) то добавляем вначало "0" для правильного отображения
-        if (resultDate.getDate.length > 0) {
-            startDate = '0' + startDate
-        }
+ function nextWeek() {
+    Date.prototype.GetFirstDayOfWeek = function() {
+        return (new Date(this.setDate(this.getDate() - this.getDay() +8)));
+    }
     
-    let startMouth = String(resultDate.getMonth() + 1) // нужно найти нормальный фикс месяца, js начинает с 0 месяца (при возможности)
-        if (resultDate.getMonth.length == 0) {
-            startMouth = '0' + startMouth
-        }
+    Date.prototype.GetLastDayOfWeek = function() {
+        return (new Date(this.setDate(this.getDate() - this.getDay() +7)));
+    }
     
-    let startYaer = String(resultDate.getFullYear())
-    
-    let endDate = String(resultDate.getDate() + 6)
-        if (endDate.length == 0) {
-            endDate = '0' + endDate
-        }
-    
-        console.log("Начало недели:"+" "+startDate) // проверка значений
-        console.log("Конец недели:"+" "+endDate) // проверка значений
-        console.log("Резульатат сборки: "+ "\n" + "https://mauniver.ru/student/timetable/new/print.php?key=db41c738-199f-11ef-9f67-1cc1de6f817c&perstart="+startYaer+"-"+startMouth+"-"+startDate+"&perend="+startYaer+"-"+startMouth+"-"+endDate) // проверка результата сборки
-        document.getElementById("result_iframe").src="";
-        document.getElementById("result_iframe").src="https://mauniver.ru/student/timetable/new/print.php?key=db41c738-199f-11ef-9f67-1cc1de6f817c&perstart="+startYaer+"-"+startMouth+"-"+startDate+"&perend="+startYaer+"-"+startMouth+"-"+endDate;
+    let today = new Date(),
+    startDate = String(today.GetFirstDayOfWeek().getDate()),
+    startMouth = String(today.getMonth()+1),
+    endDate = String(today.GetLastDayOfWeek().getDate()),
+    endMouth = startDate > endDate ? String(today.getMonth()+2) : String(today.getMonth()+1),
+    startYaer = String(today.getFullYear()),
+    endYaer = String(today.getFullYear())
 
+    startDate = startDate.length <= 1 ? "0" + startDate : startDate
+    startMouth = startMouth.length <= 1 ? "0" + startMouth : startMouth
+    endDate =  endDate.length <= 1 ? "0" + endDate : endDate
+    endMouth = endMouth.length <=1 ? "0" + endMouth : endMouth
+    endDate = endDate.length == 0 ? "0" + endDate : endDate
+
+    console.log("Начало недели:"+" "+startDate) // проверка значений
+    console.log("Конец недели:"+" "+endDate) // проверка значений
+    console.log("Резульатат сборки: "+"\n"+"https://mauniver.ru/student/timetable/new/print.php?key=db41c738-199f-11ef-9f67-1cc1de6f817c&perstart="+startYaer+"-"+startMouth+"-"+startDate+"&perend="+endYaer+"-"+endMouth+"-"+endDate) // проверка результата сборки
+    document.getElementById("result_iframe").src="";
+    document.getElementById("result_iframe").src="https://mauniver.ru/student/timetable/new/print.php?key=db41c738-199f-11ef-9f67-1cc1de6f817c&perstart="+startYaer+"-"+startMouth+"-"+startDate+"&perend="+endYaer+"-"+endMouth+"-"+endDate;
 }
 
-currentWeek();
-document.getElementById("btn_corrent_week")
-    .addEventListener('click', function btnCorrentWeekClick() {
-        currentWeek()
-});
-document
-  .getElementById("btn_next_week")
-  .addEventListener("click", function btnNextWeekClick() {
-        nextWeek();
-});
+currentWeek(); 
+
+document.getElementById("btn_corrent_week").addEventListener('click', function btnCorrentWeekClick() {currentWeek()});
+document.getElementById("btn_next_week").addEventListener("click", function btnNextWeekClick() {nextWeek();});
