@@ -11,7 +11,7 @@ function currentWeek() {
         startDate = String(today.GetFirstDayOfWeek().getDate()),
         startMouth = String(today.getMonth()+1),
         endDate = String(today.GetLastDayOfWeek().getDate()),
-        endMouth = startDate > endDate ? String(today.getMonth()+2) : String(today.getMonth()+1),
+        endMouth = parseInt(startDate) > parseInt(endDate) ? String(today.getMonth()+2) : String(today.getMonth()+1),
         startYaer = String(today.getFullYear()),
         endYaer = String(today.getFullYear())
 
@@ -30,7 +30,7 @@ function currentWeek() {
 
  function nextWeek() {
     Date.prototype.GetFirstDayOfWeek = function() {
-        return (new Date(this.setDate(this.getDate() - this.getDay() +8)));
+        return (new Date(this.setDate(this.getDate() - this.getDay() +1)));
     }
     
     Date.prototype.GetLastDayOfWeek = function() {
@@ -41,7 +41,7 @@ function currentWeek() {
     startDate = String(today.GetFirstDayOfWeek().getDate()),
     startMouth = String(today.getMonth()+1),
     endDate = String(today.GetLastDayOfWeek().getDate()),
-    endMouth = startDate > endDate ? String(today.getMonth()+2) : String(today.getMonth()+1),
+    endMouth = parseInt(startDate) > parseInt(endDate) ? String(today.getMonth()+2) : String(today.getMonth()+1),
     startYaer = String(today.getFullYear()),
     endYaer = String(today.getFullYear())
 
