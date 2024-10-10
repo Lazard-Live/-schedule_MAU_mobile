@@ -4,7 +4,7 @@ function currentWeek() {
     }
     
     Date.prototype.GetLastDayOfWeek = function() {
-        return (new Date(this.setDate(this.getDate() - this.getDay() +7)));
+        return (new Date(this.setDate(this.getDate() - this.getDay() +6)));
     }
 
     let today = new Date(),
@@ -30,11 +30,11 @@ function currentWeek() {
 
  function nextWeek() {
     Date.prototype.GetFirstDayOfWeek = function() {
-        return (new Date(this.setDate(this.getDate() - this.getDay() +1)));
+        return (new Date(this.setDate(this.getDate() - this.getDay()+ (this.getDay() == 0 ? -6:1)+7 )));
     }
     
     Date.prototype.GetLastDayOfWeek = function() {
-        return (new Date(this.setDate(this.getDate() - this.getDay() +7)));
+        return (new Date(this.setDate(this.getDate() - this.getDay() +6)));
     }
     
     let today = new Date(),
