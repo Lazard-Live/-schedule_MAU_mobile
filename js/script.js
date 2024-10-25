@@ -41,7 +41,7 @@ function currentWeek() {
     startDate = String(today.GetFirstDayOfWeek().getDate()),
     startMouth = String(today.getMonth()+1),
     endDate = String(today.GetLastDayOfWeek().getDate()),
-    endMouth = parseInt(startDate) > parseInt(endDate) ? String(today.getMonth()+2) : String(today.getMonth()+1),
+    endMouth = parseInt(startDate) > parseInt(endDate) ? String(today.getMonth()+1) : String(today.getMonth()),
     startYaer = String(today.getFullYear()),
     endYaer = String(today.getFullYear())
 
