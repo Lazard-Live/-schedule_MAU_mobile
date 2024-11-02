@@ -11,7 +11,7 @@ function currentWeek() {
         startDate = String(today.GetFirstDayOfWeek().getDate()),
         startMouth = String(today.getMonth()+1),
         endDate = String(today.GetLastDayOfWeek().getDate()),
-        endMouth = parseInt(startDate) > parseInt(endDate) ? String(today.getMonth()+2) : String(today.getMonth()+1),
+        endMouth = String(today.getMonth()+1),
         startYaer = String(today.getFullYear()),
         endYaer = String(today.getFullYear())
 
@@ -21,8 +21,7 @@ function currentWeek() {
     endMouth = endMouth.length <=1 ? "0" + endMouth : endMouth
     endDate = endDate.length == 0 ? "0" + endDate : endDate
 
-    console.log("Начало недели:"+" "+startDate) // проверка значений
-    console.log("Конец недели:"+" "+endDate) // проверка значений
+    console.log("Результат для вставки (дд.мм): "+" "+startDate+"."+startMouth+" --> "+endDate+"."+endMouth) // проверка значений
     console.log("Резульатат сборки: "+"\n"+"https://mauniver.ru/student/timetable/new/print.php?key=db41c738-199f-11ef-9f67-1cc1de6f817c&perstart="+startYaer+"-"+startMouth+"-"+startDate+"&perend="+endYaer+"-"+endMouth+"-"+endDate) // проверка результата сборки
     document.getElementById("result_iframe").src="";
     document.getElementById("result_iframe").src="https://mauniver.ru/student/timetable/new/print.php?key=db41c738-199f-11ef-9f67-1cc1de6f817c&perstart="+startYaer+"-"+startMouth+"-"+startDate+"&perend="+endYaer+"-"+endMouth+"-"+endDate;
@@ -41,7 +40,7 @@ function currentWeek() {
     startDate = String(today.GetFirstDayOfWeek().getDate()),
     startMouth = String(today.getMonth()+1),
     endDate = String(today.GetLastDayOfWeek().getDate()),
-    endMouth = parseInt(startDate) > parseInt(endDate) ? String(today.getMonth()+1) : String(today.getMonth()),
+    endMouth = parseInt(startDate) > parseInt(endDate) ? String(today.getMonth()+2) : String(today.getMonth()+1),
     startYaer = String(today.getFullYear()),
     endYaer = String(today.getFullYear())
 
@@ -51,8 +50,7 @@ function currentWeek() {
     endMouth = endMouth.length <=1 ? "0" + endMouth : endMouth
     endDate = endDate.length == 0 ? "0" + endDate : endDate
 
-    console.log("Начало недели:"+" "+startDate) // проверка значений
-    console.log("Конец недели:"+" "+endDate) // проверка значений
+    console.log("Результат для вставки (дд.мм): "+" "+startDate+"."+startMouth+" --> "+endDate+"."+endMouth) // проверка значений
     console.log("Резульатат сборки: "+"\n"+"https://mauniver.ru/student/timetable/new/print.php?key=db41c738-199f-11ef-9f67-1cc1de6f817c&perstart="+startYaer+"-"+startMouth+"-"+startDate+"&perend="+endYaer+"-"+endMouth+"-"+endDate) // проверка результата сборки
     document.getElementById("result_iframe").src="";
     document.getElementById("result_iframe").src="https://mauniver.ru/student/timetable/new/print.php?key=db41c738-199f-11ef-9f67-1cc1de6f817c&perstart="+startYaer+"-"+startMouth+"-"+startDate+"&perend="+endYaer+"-"+endMouth+"-"+endDate;
